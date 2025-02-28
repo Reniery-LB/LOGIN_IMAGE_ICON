@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -28,10 +30,19 @@ public class Ventana extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		
+		ImageIcon icono = new ImageIcon("icono.png");
+		Image imagen = icono.getImage();
+		setIconImage(imagen);
+		
+		
+		//this.add(this.calculadora());
+		
+	
 		this.setLayout(new BorderLayout()); //LAYOUT MANAGER
 		
 		this.add(this.login(), BorderLayout.WEST); //JPANEL A LA IZQUIERDA
-		this.add(this.logo(), BorderLayout.EAST); //JPANEL A LA DERECHA
+		this.add(this.logo(), BorderLayout.EAST); //JPANEL A LA DERECHA 
+		//this.add(this.icono());
 		
 		//BARRA
 		JMenuBar barra = new JMenuBar();
@@ -228,4 +239,60 @@ public class Ventana extends JFrame{
 		
 		return mipanel;
 	}
+	
+	/*public Image icono() {
+		Image icono = Toolkit.getDefaultToolkit().
+			getImage(ClassLoader.getSystemResource("icono.png"));
+		
+		return icono;
+	} */
+	
+
+	
+	/*public JPanel calculadora() {
+		//JPANEL
+		
+		JPanel mipanel = new JPanel();
+		mipanel.setBackground(Color.decode("#EABDE6"));
+		mipanel.setOpaque(true);
+		mipanel.setLayout(new BorderLayout()); 
+		
+		JLabel results = new JLabel("20.00");
+		results.setBackground(Color.WHITE);
+		results.setOpaque(true);
+		//results.setFont(fuente);
+		mipanel.add(results,BorderLayout.NORTH);
+		
+		JPanel centro = new JPanel();
+		centro.setBackground(Color.decode("#EAADE6"));
+		centro.setOpaque(true);
+		centro.setLayout(new BorderLayout());
+		mipanel.add(centro,BorderLayout.CENTER));
+		
+		JPanel botones = new JPanel();
+		botones.setLayout(new GridLayout(4,3));
+		centro.add(botones,BorderLayout.CENTER);
+		
+		String[] textos = {"9", "8", "7", "6", "5", "4", "3", "2", "1", "0", "."};
+		
+		for (String texto_boton : textos) {
+			
+			JButton boton = new JButton(texto_boton);
+			botones.add(boton);
+		}
+		
+		JPanel grilla = new JPanel();
+		grilla.setLayout(new GridLayout(6,1));
+		centro.add(grilla, BorderLayout.LINE_END);
+		
+		String[] textos2 = {"+", "-", "*", "/", "=", "CE"};
+		
+		for (String texto_boton : textos2) {
+			
+			JButton boton = new JButton(texto_boton);
+			grilla.add(boton);
+		}
+		
+		return mipanel;
+	} */
 }
